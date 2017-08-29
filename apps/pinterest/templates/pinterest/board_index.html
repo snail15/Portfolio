@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'pinterest/css/style.css' %}">
+    <title>Pinterest</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{%url 'pinterest:pin_index'%}"><img class='mainpage-logo' src="{%static 'pinterest/img/pinterest_logo.png'%}" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'pinterest:pin_index'%}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'pinterest:user_show'%}">{{request.session.username}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+         <div class="row link-row">
+            <div class="col-sm-6">
+                <a href="{%url 'pinterest:show_user_pins'%}" class='create-link' id='showPin'>Your Pin</a>
+            </div>
+            <div class="col-sm-6">
+                 <a href="{%url 'pinterest:board_index'%}" class='create-link' id='showBoard'>Your Board</a>
+            </div>
+        </div>
+        <div class="row board-row">
+            {% for board in boards %}
+            <div class="col-sm-2">
+                <div class="board-card">
+                    <div class="row">
+                        <div class="col-sm-12 board-box">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 board-name">
+                            <p class='board-title'>{{board.title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="{%static 'pinterest/js/pin.js'%}"></script>
+</body>
+
+</html>

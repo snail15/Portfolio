@@ -1,0 +1,29 @@
+<div class="col-sm-2">
+                <a data-toggle='modal' data-target='#pinModal'><img class='link-icon' src="{%static 'pinterest/img/add.png'%}" alt="save pin"></a>
+            </div>
+            <div class="col-sm-9" id='user-content-col'>
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    <div class="gutter-sizer"></div>
+                    {% for pin in pins %}
+                    <div class="grid-item">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">{{pin.title}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 link-col">
+                                </div>
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-1"></div>

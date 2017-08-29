@@ -1,0 +1,353 @@
+/* General Setting */
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    color: #e67e22;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+}
+
+.container{ width: 100%; }
+
+/* Reuseables */
+
+h1 { 
+    font-size: 350%;
+    /* color: #2ecc71; */
+    color: white;
+    font-weight: bold;
+}
+
+h2 { 
+    font-size: 250%;
+    font-weight: bold;
+}
+
+.row-header { 
+    text-align: center;
+    color: #e67e22;
+ }
+
+h4 { font-size: 100%; }
+
+.tooltip_templates {display: none;}
+
+#tooltip-img {
+    width:10%;
+    height: 300px;
+}
+/* Cover Section */
+
+.cover-row {
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(../img/cover.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(../img/cover.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+.nav {
+    list-style: none;
+    text-align: right;
+    margin-top: 5%;
+    margin-right: 3%;
+}
+
+.contact-row,
+#aboutme {
+    padding: 8%;
+}
+
+.nav li {
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.nav li a:link,
+.nav li a:visited {
+    padding-bottom: 7%;
+    color: #2ecc71;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 0.5s;
+    transition: border-bottom 0.5s;
+}
+.nav li a:hover,
+.nav li a:active {
+    padding-bottom: 7%;
+    background: transparent;
+    border-bottom: 2px solid #2ecc71;
+}
+
+.cover-row h1,
+.cover-row h2 {
+    margin-left: 8%;
+    /* text-transform: uppercase; */
+}
+
+.cover-row h1 { margin-top: 12%;}
+.cover-row h2 { margin-bottom: 15% }
+
+#myname { 
+    /* color: #e67e22; */
+    /* color: #fd4514; */
+    /* color: #c81f66; */
+    color: white;
+
+ }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin:0;
+    padding-right:4%;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 2px #efefef;
+    z-index: 9999;
+}
+
+/* .sticky .nav { margin-top: 18px; } */
+
+.sticky .nav li a:link,
+.sticky .nav li a:visited {
+    padding: 16px 0;
+    color: #555;
+}
+
+.sticky .logo { display: none; }
+.sticky .logo-black { display: block; }
+
+.normal-span { color: #2ecc71; }
+
+/* Typing effect */
+
+#blackmagic {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    color: #e67e22;
+    white-space: nowrap; /* Keeps the content on a single line */
+    letter-spacing: .05em; /* Adjust as needed */
+    animation: 
+        typing 5s steps(120, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0%; }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #2ecc71; }
+}
+
+.showmore {
+    /* background-color: #2ecc71; */
+    background-color: transparent;
+    /* color:#019875; */
+    color: white;
+    margin-left: 42%;
+    text-transform: uppercase;
+    border: 1px solid #2ecc71;
+    border-radius: 200px;
+    padding:1%;
+    
+}
+
+.showmore:link,
+.showmore:visited {
+    text-decoration: none;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+}
+
+.showmore:hover,
+.showmore:active {
+    color: black;
+    background-color: #2ecc71;
+}
+
+/* About me section */
+
+/* #aboutme { background-color: #f4f4f4; } */
+#edu-header,
+#exp-header,
+#me-header { color: #e67e22; }
+
+#aboutme { background-color: white;}
+#aboutme h3,
+#aboutme h4,
+#aboutme h5 { 
+    text-align: center; 
+    color: #2a3a3f;
+}
+
+
+#aboutme h3 { font-size: 170%; }
+
+#aboutme img {
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+}
+
+#aboutme p { text-align: center;}
+.profile-card1,
+.profile-card2,
+.profile-card3 {
+    background-color: white;
+    padding: 4% 8% 0% 8%;
+    margin-left: 1%;
+    border: 0.2px solid #2ecc71;
+    box-shadow:  0 1px 1px black;
+    opacity: 0;
+    color: #2a3a3f;
+}
+
+.profile-card1.animated,
+.profile-card2.animated,
+.profile-card3.animated{ 
+    opacity: 1;
+}
+
+.mypic-col { 
+    padding-right: 0%; 
+    padding-left: 0%;
+}
+
+.intro-row h4 { line-height: 1.8em;}
+
+.profile-card2 .col-sm-3 { padding-top : 15%;}
+#last-pic{ padding-top : 5%;}
+
+.coding-img {
+    padding-top: 25%;
+}
+
+#uoc { margin-bottom: 7%;}
+
+/* Portfolio Section */
+#portfolio { 
+    margin-top: 2%;
+    padding: 8%;
+    background-color: #f4f4f4;
+ }
+#portfolio h2 { margin-bottom: 2%;}
+.portfolio-col img {
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.7;
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.portfolio-col img:hover {
+    opacity: 1;
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+.portfolio-col { 
+    padding: 5%;
+    overflow: hidden;
+}
+
+.project-info {
+    text-align: center;
+}
+
+.project-btn1,
+.project-btn2 {
+    /* background-color: #2ecc71; */
+    background-color: transparent;
+    /* color:#019875; */
+    color: #019875;
+    border: 1px solid #2ecc71;
+    border-radius: 200px;
+    padding:1.5%;
+}
+
+.project-btn1 {
+     margin-left: 28%;
+}
+
+.project-btn2 {
+    margin-left: 7%;
+}
+
+.project-btn1:link,
+.project-btn1:visited,
+.project-btn2:link,
+.project-btn2:visited {
+    text-decoration: none;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+}
+
+.project-btn1:hover,
+.project-btn1:active,
+.project-btn2:hover,
+.project-btn2:active  {
+    color: white;
+    background-color: #2ecc71;
+}
+
+.portfolio-col h5 {
+    margin-bottom: 5%;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
+/* Contact Section */
+
+.contact-row { background-color: #424242; }
+
+.fa { 
+    margin-left: 41.5%;
+    transition: color 0.5s;
+}
+
+.fa:hover {
+    color: wheat;
+}
+
+.contact-me { margin-bottom: 4%;}
+
+.contact-link,
+.contact-link:visited { color: #e67e22}
+
+.contact-info { text-align: center; }

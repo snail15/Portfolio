@@ -1,0 +1,78 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+}
+
+.container {
+    margin: 0;
+  
+    height:100%;
+    width: 100%;
+}
+
+.grid-sizer,
+.grid-item { width: 16%; }
+
+.gutter-sizer { width: 1%; }
+
+.grid-item { margin-bottom: 2%;}
+.pin-row img {
+    width: 100%;
+}
+
+.navbar {
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+    padding-bottom: 0.5%;
+    background-color: white;
+}
+
+.navbar li,
+.navbar button,
+.navbar a,
+.navbar form {
+    font-size:85%;
+}
+
+.form-inline input[type=text] {
+    font-size:85%;
+    width: 4000%;
+    background-color: #efefef;
+    border: 0px solid white;
+}
+
+.mainpage-logo {
+    height: 45px;
+    width: 45px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 769px;
+    }
+    .grid-sizer,
+    .grid-item { width: 49.5%; }
+}
+@media only screen and (min-width: 769px) {
+    .grid-sizer,
+    .grid-item { width: 24.2%; }
+    .container {
+        max-width: 992px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .grid-sizer,
+    .grid-item { width: 19.2%; }
+    .container {
+        max-width: 1200px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .grid-sizer,
+    .grid-item { width: 15.8%; }
+    .container {
+        max-width: 1680px;
+    }
+
+}

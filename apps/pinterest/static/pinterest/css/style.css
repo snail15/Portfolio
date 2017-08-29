@@ -1,0 +1,317 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+}
+
+.container {
+    margin: 0;
+  
+    height:100%;
+    width: 100%;
+}
+
+.grid-sizer,
+.grid-item { width: 16%; }
+
+.gutter-sizer { width: 1%; }
+
+.grid-item { margin-bottom: 0.2%;}
+.pin-row img {
+    width: 100%;
+}
+
+.navbar {
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+    padding-bottom: 0.5%;
+    background-color: white;
+    margin-bottom: 0.7%;
+    border-bottom: 1px solid grey;
+}
+
+.navbar li,
+.navbar button,
+.navbar a,
+.navbar form {
+    font-size:85%;
+}
+
+.form-search input[type=text] {
+    font-size:85%;
+    width: 200px; 
+    background-color: #efefef;
+    border: 0px solid white;
+}
+
+.mainpage-logo {
+    height: 45px;
+    width: 45px;
+}
+
+.navbar-nav {
+    position: absolute;
+    right: 3%;
+}
+
+.btn-default {
+    text-decoration: none;
+    color: gray;
+    font-size: 80%;
+}
+
+.follow-number {
+    margin-bottom: 0;
+}
+
+.follow-label {
+    font-size: 80%;
+    color: gray;
+}
+
+.create-link {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.selected {
+    border-bottom: 2px solid gray;
+}
+
+.create-link:hover{
+     text-decoration: none;
+     border-bottom: 2px solid gray;
+
+}
+
+.user-content-btn-row {
+    margin-top: 4%;
+}
+
+span{
+    color: gray;
+}
+
+.btn-modal {
+    margin-top: 3%;
+}
+
+#showPin,
+#showBoard {
+    margin-left: 35%;
+}
+
+.link-row {
+    margin-bottom: 2%;
+}
+
+.board-card {
+    margin-left: 7%;
+}
+
+.board-box{
+    width: 100%;
+    height: 200px;
+    background-color: gray;
+}
+
+.board-title {
+    text-align: center;
+}
+
+.pin-thumbnail {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.pin-thumbnail:hover {
+    opacity: 0.6;
+}
+.card-title {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0%;
+    font-size: 90%;
+}
+
+#view-card-title {
+    font-size:140%;
+    margin-bottom: 2%;
+}
+.card-body {
+    padding: 0;
+}
+
+.card-link {
+    margin-left: 35%;
+    font-size: 50%;
+    width: 100%;
+    visibility: hidden;
+}
+
+.board-link {
+    margin-left:38%;
+    font-size: 50%;
+    visibility: hidden;
+}
+
+.card-info {
+    text-align: center;
+    font-size: 85%;
+    margin-bottom: 1%;
+}
+
+#profile-pic {
+    border-radius: 50%;
+    width:60%;
+    margin-bottom: 2%;
+}
+
+.profile-col {
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+.card-wrapper {
+    padding: 1.5% 1.5% 0% 1.5%;
+    border-radius: 3%;
+}
+
+.board-wrapper {
+    padding: 1.5%;
+    border-radius: 3%;
+}
+
+.board-card {
+    background-color: gray;
+    margin:0;
+}
+
+.board-text {
+    text-align: center;
+}
+
+.btn-logout {
+    padding-left: 0;
+}
+
+.user-content-btn-row {
+    margin-bottom: 2%;
+}
+
+.link-icon {
+    opacity: 1;
+    width: 30%;
+    margin-left:37%;
+    margin-top:15%;
+    transition: opacity 0.5s;
+}
+.board-thumbnail {
+    width: 100%;
+}
+.link-icon:hover {
+    opacity: 0.6;
+}
+.another-board {
+    margin-left:43%;
+}
+.btn-comment {
+    position: absolute;
+    right: 1.7%;
+    margin-top: 0.5%;
+    padding: 0.5% 1% 0.5% 1%;
+    font-size: 50%;
+    margin-bottom: 5%;
+
+}
+
+.comment-profile {
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 50%;
+}
+
+.comment-name {
+    font-size: 60%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.comment-box{
+    font-size: 70%;
+    display: inline;
+}
+
+.shame { 
+    font-size: 50%;
+    margin-left: 1%;
+    display: inline;
+}
+
+.comment-col {
+    margin-bottom: 1%;
+}
+
+#showPin,
+#showBoard {
+    display: inline;
+}
+
+.underline {
+   border-bottom: 2px solid gray;
+}
+
+.thumbnail {
+    width: 100%;
+}
+
+.comment-form-group{ margin-bottom: 0;}
+
+.thumbnail-grid{width:100%;}
+
+.modal-label:before{
+    content: url('../img/unchecked.png');
+    position: absolute;
+    z-index: 100;
+    width:10%;
+}
+
+:checked + .modal-label:before {
+    content: url('../img/checked.png');
+    width:10%;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 769px;
+    }
+    .grid-sizer,
+    .grid-item { width: 49.5%; }
+}
+@media only screen and (min-width: 769px) {
+    .grid-sizer,
+    .grid-item { width: 24.2%; }
+    .container {
+        max-width: 992px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .grid-sizer,
+    .grid-item { width: 19.2%; }
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .grid-sizer,
+    .grid-item { width: 15.8%; }
+    .container {
+        max-width: 1680px;
+    }
+}

@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {%load static%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+    <link rel="icon" type='image/png' href="{%static 'pinterest/img/pinterest_logo.png'%}">
+    <link rel="stylesheet" href="{% static 'pinterest/css/style.css' %}">
+    <title>Hi, {{request.session.username}}</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{%url 'pinterest:pin_index'%}"><img class='mainpage-logo' src="{%static 'pinterest/img/pinterest_logo.png'%}" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {% comment %} <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </form> {% endcomment %}
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'pinterest:pin_index'%}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'pinterest:user_show'%}">{{request.session.username}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row pin-row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-title" id="view-card-title">{{pin.title}}</p>
+                        <p class="card-info">Pin Created By:  <a class='create-link' href="{%url 'pinterest:user_show_info' id=created_user.id %}">{{created_user.name}}</a></p>
+                        <p class="card-info">Saved By: {{saved_by}} users {% if popular %} <span class="badge badge-pill badge-danger">Popular!</span> {% endif %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <p>Comments:</p>
+            </div>
+        </div>
+        <div class="row comment-row">
+            {%for comment in comments%}
+            <div class="comment-col col-sm-3"></div>
+            <div class="comment-col col-sm-1">
+                <img class='comment-profile' src="{{comment.author.profile.url}}" alt="user profile">
+                <p class='comment-name'>{{comment.author.name}}</p>
+            </div>
+            <div class="comment-col col-sm-5">
+                <p class='comment-box'>{{comment.comment}}</p>
+                {% if comment.author.email == request.session.email %}
+                <p class='shame create-link' path="{%url 'pinterest:delete_comment' id=comment.id pin_id=pin.id%}">Embarassed?</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+            {%endfor%}
+        </div>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form action="{%url 'pinterest:create_comment'%}" id='comment-form' method="post">
+                    <div class="comment-form-group form-group">
+                        <label for="comment">Leave Comment:</label>
+                            {% csrf_token %}
+                            <input type="hidden" name='pin-id' value='{{pin.id}}'>
+                            <textarea name='comment' class="form-control" id="comment" rows="1"></textarea>
+                    </div>
+                </form>
+                    <button type='submit' class='btn btn-danger btn-comment'>Comment</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="{%static 'pinterest/js/pin.js'%}"></script>
+</body>
+
+</html>

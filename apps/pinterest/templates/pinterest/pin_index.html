@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+    <link rel="icon" type='image/png' href="{%static 'pinterest/img/pinterest_logo.png'%}">
+    <link rel="stylesheet" href="{% static 'pinterest/css/style.css' %}">
+    <title>Pinterest</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{%url 'pinterest:pin_index'%}"><img class='mainpage-logo' src="{%static 'pinterest/img/pinterest_logo.png'%}" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="form-search my-2 my-lg-0" method='post' action="{%url 'pinterest:search'%}">
+                            <input id='search-bar' name='search_bar' class="form-control mr-sm-2" type="text" placeholder="Search Pin" aria-label="Search">                                          
+                        </form>
+                        <form class="form-search my-2 my-lg-0" method='post' action="{%url 'pinterest:search'%}">
+                            <input id='search-user' name='search_user' class="form-control mr-sm-2" type="text" placeholder="Search User" aria-label="Search">                                          
+                        </form>
+                        {% comment %} <form class="form-search my-2 my-lg-0" method='post' action="{%url 'pinterest:search'%}">
+                            <input id='search-board' name='search_board' class="form-control mr-sm-2" type="text" placeholder="Search Board" aria-label="Search">                                          
+                        </form> {% endcomment %}
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'pinterest:pin_index'%}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'pinterest:user_show'%}">{{request.session.username}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row pin-row">
+            <div class="col-sm-12">
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    <div class="gutter-sizer"></div>
+                    {% comment %} {% for pin in pins %}
+                    <div class="grid-item"><a href="{%url 'pinterest:add_pin' id=pin.id %}" data-toggle='modal' data-target='#confirmModal'><img class='pin-thumbnail' src="{{pin.image.url}}" alt="pin image"></a></div>
+                    {% endfor %} {% endcomment %}
+                    {% for pin in pins %}
+                    <div class="grid-item">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">{{pin.title}}</p>
+                                    {% comment %} <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="{%url 'pinterest:add_pin' id=pin.id %}" class="card-link btn btn-primary">Save Pin</a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link btn btn-success">View</a>
+                                        </div>
+                                    </div> {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:add_pin' id=pin.id %}" class="card-link">Save Pin</a>
+                                </div>
+                                <div class="col-sm-6 link-col">
+                                     <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <script src="{%static 'pinterest/js/pin.js'%}"></script>
+</body>
+
+</html>

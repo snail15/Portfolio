@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {%load static%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'pinterest/css/style.css' %}">
+    <title>Hi, {{request.session.username}}</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{%url 'pinterest:pin_index'%}"><img class='mainpage-logo' src="{%static 'pinterest/img/pinterest_logo.png'%}" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {% comment %}
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </form> {% endcomment %}
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'pinterest:pin_index'%}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'pinterest:user_show'%}">{{request.session.username}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row link-row">
+            {% if pins %}
+            <div class="col-sm-6">
+                <a href="{%url 'pinterest:show_user_pins'%}" class='create-link' id='showPin'>Your Pin</a>
+            </div>
+            <div class="col-sm-6">
+                <a href="{%url 'pinterest:board_index'%}" class='create-link' id='showBoard'>Your Board</a>
+            </div>
+            {% elif another_user_pins %}
+            <div class="col-sm-6">
+                <a href="{%url 'pinterest:show_another_user_pins' id=another_user.id%}" class='create-link' id='showPin'>{{another_user.name}}'s Pin</a>
+            </div>
+            <div class="col-sm-6">
+                <a href="{%url 'pinterest:board_index'%}" class='create-link' id='showBoard'>{{another_user.name}}'s Board</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="row pin-row">
+            <div class="col-sm-12">
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    <div class="gutter-sizer"></div>
+                    {% if pins %} {% for pin in pins %}
+                    <div class="grid-item">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">{{pin.title}}</p>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-sm-6 link-col">
+                                </div>
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% elif another_user_pins %} {% for pin in another_user_pins %}
+                    <div class="grid-item">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">{{pin.title}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:add_pin' id=pin.id %}" class="card-link">Save Pin</a>
+                                </div>
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="{%static 'pinterest/js/pin.js'%}"></script>
+</body>
+
+</html>

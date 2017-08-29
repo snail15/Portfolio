@@ -1,0 +1,28 @@
+{%load static%} 
+<div class="col-sm-2">
+                <a data-toggle='modal' data-target='#boardModal'><img class='link-icon' src="{%static 'pinterest/img/add.png'%}" alt="create board"></a>
+            </div>
+            <div class="col-sm-9" id='user-content-col'>
+                <div class="row">
+                    {% for board in boards%}
+                    <div class="col-sm-4">
+                       <div class="board-wrapper">
+                           <div class="card board-card">
+                               <div class="card-body">
+                                    <p id='board-title' class=' board-text'>{{board.title}}</p>
+                                    {%for key, value in num_pin.items%}
+                                    {% if key == board.id%}
+                                    <p class='board-text'>{{value}} pins saved</p>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <a href="{%url 'pinterest:edit_board' id=board.id%}" class="board-text btn btn-danger board-link">View/Edit</a>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+            

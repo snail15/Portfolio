@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {%load static%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+    <link rel="icon" type='image/png' href="{%static 'pinterest/img/pinterest_logo.png'%}">
+    <link rel="stylesheet" href="{% static 'pinterest/css/style.css' %}">
+    <title>Hi, {{request.session.username}}</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{%url 'pinterest:pin_index'%}"><img class='mainpage-logo' src="{%static 'pinterest/img/pinterest_logo.png'%}" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{%url 'pinterest:pin_index'%}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'pinterest:user_show'%}">{{request.session.username}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row" id='content-row'>
+            <div class="col-sm-2">
+                <a data-toggle='modal' data-target='#pinModal2'><img class='link-icon' src="{%static 'pinterest/img/add.png'%}" alt="save pin"></a>
+            </div>
+            <div class="col-sm-9" id='user-content-col'>
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    <div class="gutter-sizer"></div>
+                    {% for pin in pins %}
+                    <div class="grid-item">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">{{pin.title}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 link-col">
+                                    <a path="{%url 'pinterest:unpin_from_board' id=pin.id board_id=board.id%}" class="create-link unpin card-link">Unpin</a>
+                                </div>
+                                <div class="col-sm-6 link-col">
+                                    <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link create-link">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="modal fade" id="boardModal" tabindex="-1" role="dialog" aria-labelledby="boardModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="boardModalLabel">Create Board</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action='{% url "pinterest:create_board" %}' method='post' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="wrapper">
+                                <label for="{{ pin_form.title_for_label }}">Title:</label> {{board_form.title}}
+                            </div>
+                            <div class="wrapper">
+                                <label for="{{ pin_form.description_for_label }}">Description:</label> {{board_form.description}}
+                            </div>
+                            <div class="wrapper">
+                                <label for="{{ pin_form.description_for_label }}">Topic:</label> {{board_form.topic}}
+                            </div>
+                            <input class='btn btn-primary btn-modal' type="submit" value="Save">
+                            <button type="button" class="btn btn-secondary btn-modal" data-dismiss="modal">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="pinModal2" tabindex="-1" role="dialog" aria-labelledby="pinModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pinModalLabel">Add Pin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action='{% url "pinterest:board_add_pin" id=board.id %}' method='post' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                {% for pin in all_pins%}
+                                <div class="col-sm-4">
+                                    {% comment %} <input type="checkbox" id="{{pin.id}}" /> {% endcomment %}
+                                    {% comment %} <label class='modal-label' for="{{pin.id}}}"> {% endcomment %}
+                                    <img name='{{pin.id}}' value='{{pin.id}}' class='thumbnail' src="{{pin.image.url}}" />
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <input class='btn btn-primary btn-modal' type="submit" value="Save">
+                            <button type="button" class="btn btn-secondary btn-modal" data-dismiss="modal">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="{%static 'pinterest/js/jquery.imgcheckbox.js'%}"></script>
+    <script src="{%static 'pinterest/js/pin.js'%}"></script>
+
+</body>
+
+</html>

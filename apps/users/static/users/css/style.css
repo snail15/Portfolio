@@ -1,0 +1,83 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+}
+
+body {
+  background: url('../img/login_background.gif');
+}
+.container {
+    margin: 0;
+  
+    height:100%;
+    width: 100%;
+}
+
+
+#btn-login {
+    position: absolute;
+    right: 2%;
+    margin-top: 1.5%;
+    font-size: 60%;
+    padding: 0.5% 2.3%;
+    font-weight: bold;
+    background-color: #ebebeb;
+}
+
+.registration-card {
+    margin: 25% auto;
+    background-color:white;
+}
+
+.form {
+    padding: 10%;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'],
+input[type='number'] {
+    background-color: #f0f0f0;
+}
+.btn-registration {
+    background-color: red;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.pinterest-logo {
+    margin: 0 37%;
+}
+
+.greeting {
+    text-align: center;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+
+small {
+    font-size: 60%;
+}
+@media only screen and (max-width: 768px) {
+    
+}
+@media only screen and (min-width: 769px) {
+    
+}
+@media only screen and (min-width: 992px) {
+    
+}
+@media only screen and (min-width: 1200px) {
+    .container {
+        max-width: 1800px;
+    }
+}

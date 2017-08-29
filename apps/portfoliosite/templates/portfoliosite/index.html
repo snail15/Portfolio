@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{%static 'portfoliosite/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'portfoliosite/css/animate.css'%}">
+    <link rel="stylesheet" href="{%static 'portfoliosite/css/tooltipster.bundle.min.css'%}">
+    <link rel="stylesheet" href="{%static 'portfoliosite/css/tooltipster-sideTip-shadow.min.css'%}">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{%static 'portfoliosite/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'portfoliosite/css/queries.css'%}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{%static 'portfoliosite/js/jquery.waypoints.min.js'%}"></script>
+    <script src="{%static 'portfoliosite/js/tooltipster.bundle.min.js'%}"></script>
+    <script src="{%static 'portfoliosite/js/index.js'%}"></script>
+    <title>Sungin Jung</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row cover-row" id='home'>
+            <div class="col-sm-12">
+                <ul class="nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#aboutme">About Me</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <h1><span id="myname">Sungin Jung</span></h1>
+                <h2 id="blackmagic"><span class="normal-span">Attorney + </span> Web Developer.</h2>
+                <a href="#aboutme" class="showmore">Find out about me</a>
+            </div>
+        </div>
+        <div class="row" id="aboutme">
+            <h2 class="row-header">About Me</h2>
+            <div class="col-sm-4">
+                <h3 id="me-header">Basic Profile</h3>
+                <div class="profile-card1">
+                    <div class="row">
+                        <div class="col-sm-5 mypic-col">
+                            <img src="{%static 'portfoliosite/img/programmer.png'%}" alt="Programmer">
+                        </div>
+                        <div class="col-sm-7">
+                            <h3>Name</h3>
+                            <h3><span class='normal-span'>Sungin Jung</span></h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row intro-row">
+                        <div class="col-sm-12">
+                            <h4>Obssessed with Soccer</h4>
+                            <h4>Obssessed with Reading</h4>
+                            <h4>Obssessed with Game of Thrones</h4>
+                            <h4>Made in Korea</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <img class='coding-img' src="{%static 'portfoliosite/img/coding.png'%}" alt="coding"> {% comment %}
+                <h3 id="edu-header">Education</h3>
+                <div class="profile-card2">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="{%static 'portfoliosite/img/emory.png'%}" alt="Emory University">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>Emory University</h4>
+                            <h5>Bachelor of Business Administration</h5>
+                            <h5>Class of 2010</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="{%static 'portfoliosite/img/fordham.png'%}" alt="Fordham Law">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>Forhdam University School of Law</h4>
+                            <h5>Juris Doctor</h5>
+                            <h5>Class of 2014</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3" id="last-pic">
+                            <img src="{%static 'portfoliosite/img/uoc.gif'%}" alt="Emory University">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>The University of Chicago</h4>
+                            <h5>Masters in Computer Science</h5>
+                            <h5>Class of 2017</h5>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+            <div class="col-sm-4">
+                <h3 id="exp-header">Education</h3>
+                <div class="profile-card3">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="{%static 'portfoliosite/img/emory.png'%}" alt="Emory University">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>Emory University</h4>
+                            <h5>Bachelor of Business Administration</h5>
+                            <h5>Class of 2010</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="{%static 'portfoliosite/img/fordham.png'%}" alt="Fordham Law">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>Forhdam University School of Law</h4>
+                            <h5>Juris Doctor</h5>
+                            <h5>Class of 2014</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id='uoc' class="row">
+                        <div class="col-sm-3" id="last-pic">
+                            <img src="{%static 'portfoliosite/img/uoc.gif'%}" alt="Emory University">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>The University of Chicago</h4>
+                            <h5>Masters in Computer Science</h5>
+                            <h5>Class of 2017</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="portfolio">
+            <h2 class="row-header">My Work</h2>
+            {% comment %}
+            <div class="col-sm-3 portfolio-col">
+                <img class="tooltipster" src="{%static 'portfoliosite/img/pinterest.png'%}" data-tooltip-content="#tooltip_content" alt="pinterest">
+            </div>
+            <div class="tooltip_templates">
+                <span id="tooltip_content">
+                        <img id="tooltip-img" src="{%static 'portfoliosite/img/uoc.gif'%}"> <strong>This is the content of my tooltip!</strong>
+                    </span>
+            </div> {% endcomment %}
+            <div class="col-sm-6 portfolio-col">
+                <img class="tooltipster" src="{%static 'portfoliosite/img/pinterest.png'%}" title="Pinterest Clone" alt="pinterest">
+                <h4 class='project-info'>Pinterest Clone</h4>
+                <h5 class='project-info'>Python/Django</h5>
+                <button type='button' class="project-btn1" data-toggle="modal" data-target="#pinterestModal">See Demo</button>
+                <a href="{%url 'users:greeting'%}" class="project-btn2">Visit</a>
+                <div id ='pinterestModal' class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="pinterestModalLabel" aria-hidden="true">
+                    <div class="vertical-alignment-helper">
+                        <div class="modal-dialog modal-lg vertical-align-center">
+                            <div class="modal-content">
+                                <img src="{%static 'portfoliosite/img/pinterest_animation.gif'%}" alt="pinterest demo"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-6 portfolio-col">
+                <img class="tooltipster" src="{%static 'portfoliosite/img/pinterest.png'%}" title="Pinterest Clone" alt="pinterest">
+                <h4 class='project-info'>Pinterest Clone</h4>
+                <h5 class='project-info'>Python/Django</h5>
+                <a href="#" class="project-btn1">See Demo</a>
+                <a href="{%url 'users:greeting'%}" class="project-btn2">Visit</a>
+
+            </div>
+        </div>
+        <div class="row contact-row">
+            <h2 class="row-header contact-me">Contact Me</h2>
+            <div class="col-sm-4">
+                <a class='contact-link' href="mailto:1986seoul@gmail.com?subject=Hi, Sungin"><i class="fa fa-envelope-o fa-4x" aria-hidden="true"></i></a>
+                <h4 class='contact-info'>My Email</h4>
+            </div>
+            <div class="col-sm-4">
+                <a target="_blank" href="https://www.github.com/snail15" class="contact-link"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+                <h4 class='contact-info'>My Github Repository</h4>
+            </div>
+            <div class="col-sm-4">
+                <a target="_blank" href="https://www.linkedin.com/in/sungin-jung-ab1bab148/" class="contact-link"><i class="fa fa-linkedin-square fa-4x" aria-hidden="true"></i></a>
+                <h4 class='contact-info'>My LinkedIn Profile</h4>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

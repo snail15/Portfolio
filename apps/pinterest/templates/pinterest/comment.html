@@ -1,0 +1,29 @@
+{% if delete_comment %}
+ {%for comment in comments%}
+            <div class="comment-col col-sm-3"></div>
+            <div class="comment-col col-sm-1">
+                <img class='comment-profile' src="{{comment.author.profile.url}}" alt="user profile">
+                <p class='comment-name'>{{comment.author.name}}</p>
+            </div>
+            <div class="comment-col col-sm-5">
+                <p class='comment-box'>{{comment.comment}}</p>
+                {% if comment.author.email == request.session.email %}
+                <p class='shame create-link' path="{%url 'pinterest:delete_comment' id=comment.id pin_id=comment.pin.id%}">Embarassed?</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+            {%endfor%}
+{% else %}
+   <div class="comment-col col-sm-3"></div>
+            <div class="comment-col col-sm-1">
+                <img class='comment-profile' src="{{comment.author.profile.url}}" alt="user profile">
+                <p class='comment-name'>{{comment.author.name}}</p>
+            </div>
+            <div class="comment-col col-sm-5">
+                <p class='comment-box'>{{comment.comment}}</p>
+                {% if comment.author.email == request.session.email %}
+                <p class='shame create-link' path="{%url 'pinterest:delete_comment' id=comment.id pin_id=comment.pin.id%}">Embarassed?</p>
+                {% endif %}
+            </div>
+    <div class="col-sm-3"></div>
+{% endif %}

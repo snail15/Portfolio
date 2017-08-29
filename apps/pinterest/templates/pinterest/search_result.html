@@ -1,0 +1,62 @@
+ {% comment %}
+<div class="col-sm-12">
+    <h4>Users</h4>
+    {% for user in users %}
+    <a href="{%url 'pinterest:user_show_info' id=user.id%}">{{user.name}}</a> {% endfor%}
+</div>
+<div class="row"> {% endcomment %} {% if pins %}
+    <div class="col-sm-12">
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>
+            {% for pin in pins %}
+            <div class="grid-item">
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img class="pin-thumbnail card-img-top" src="{{pin.image.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-title">{{pin.title}}</p>
+                            {% comment %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="{%url 'pinterest:add_pin' id=pin.id %}" class="card-link btn btn-primary">Save Pin</a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link btn btn-success">View</a>
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 link-col">
+                            <a href="{%url 'pinterest:add_pin' id=pin.id %}" class="card-link">Save Pin</a>
+                        </div>
+                        <div class="col-sm-6 link-col">
+                            <a href="{%url 'pinterest:show_pin' id=pin.id%}" class="card-link">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% elif users %}
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td> <a href="{%url 'pinterest:user_show_info' id=user.id %}">{{user.name}}</a></td>
+                    <td>{{user.email}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %} {% endif %} {% comment %} </div> {% endcomment %}
